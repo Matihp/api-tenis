@@ -1,0 +1,16 @@
+.timeContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+}
+.nameContainer{
+    display: flex;
+    justify-content: space-around;
+    color: red;
+}
+  .item {
+    height: 100%;
+    width: 101%;
+    background-color: black;
+    border-radius: 10px;
+}
