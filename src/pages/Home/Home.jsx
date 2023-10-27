@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import CardPlayer from '../../components/cardPlayer';
+import './home.css'
 
 const Home = () => {
 
-    const [data,setData] = useState()
+    const [data,setData] = useState([])
 
     useEffect(()=>{
         async function dataApi(){
@@ -18,8 +19,9 @@ const Home = () => {
     
           try {
             const response = await fetch(url, options);
-            setData =  await response.text()
-            console.log(data);
+            const result =  await response.json()
+            setData(Array.isArray(result.events) ? result.events : []);
+            console.log(result);
           } catch (error) {
             console.error(error);
           }
@@ -28,10 +30,24 @@ const Home = () => {
       },[])
 
     return ( 
-        <div>
-             {data.map((res,index)=>{<CardPlayer key={index} name1={res.awayTeam.name} name2={res.homeTeam.name}/>})}
-            
-        </div>
+        <main className='grid-container'>
+             {data.length > 0 ? (
+                data.map((res, index) => (
+                  <CardPlayer
+                    key={index}
+                    name1={res.awayTeam.name}
+                    name2={res.homeTeam.name}
+                    time={res.startTimestamp}
+                    // round={res.roundInfo.name}
+                    country={res.tournament.name}
+                    points={res.tournament.uniqueTournament.tennisPoints}
+                  />
+                ))
+              ) : (
+                <p>No data available</p>
+              )}   
+        </main>
+      // <CardPlayer/>
     );
 }
  
