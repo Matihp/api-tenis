@@ -8,7 +8,14 @@ const Home = () => {
 
     useEffect(()=>{
         async function dataApi(){
-          const url = 'https://tennisapi1.p.rapidapi.com/api/tennis/events/28/10/2023';
+
+          const today = new Date();
+          const day = today.getDate();
+          const month = today.getMonth() + 1;
+          const year = today.getFullYear();
+          const formattedDate = `${day}/${month}/${year}`;
+
+          const url = `https://tennisapi1.p.rapidapi.com/api/tennis/events/${formattedDate}`;
           const options = {
             method: 'GET',
             headers: {
@@ -28,26 +35,41 @@ const Home = () => {
               }
           dataApi()
       },[])
+      const filterSpecificNames = (name) => {
+        return /\/?(Cerundolo F|Etcheverry T|Baez S|Schwartzman D)\/?/.test(name);
+      };
+    
+      // Filtrar los datos por nombres con barra al principio o al final seguidos por los nombres específicos
+      const filteredData = data.filter(
+        (res) =>
+          filterSpecificNames(res.awayTeam.name) || filterSpecificNames(res.homeTeam.name)
+      );
 
     return ( 
+      <>
+        <header>
+          <h1>Today's matches</h1>
+        </header>
         <main className='grid-container'>
-             {data.length > 0 ? (
-                data.map((res, index) => (
+             {filteredData.length > 0 ? (
+                filteredData.map((res, index) => (
                   <CardPlayer
                     key={index}
                     name1={res.awayTeam.name}
                     name2={res.homeTeam.name}
                     time={res.startTimestamp}
-                    // round={res.roundInfo.name}
+                    round={res.roundInfo.round}
                     country={res.tournament.name}
                     points={res.tournament.uniqueTournament.tennisPoints}
                   />
                 ))
               ) : (
-                <p>No data available</p>
+                <div className='nDataContainer'>
+                  <p>No data available</p>
+                </div>  
               )}   
         </main>
-      // <CardPlayer/>
+      </>
     );
 }
  

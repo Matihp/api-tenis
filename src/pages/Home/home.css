@@ -3,3 +3,14 @@
     grid-template-columns: 1fr 1fr ;
     gap: 10px;
   }
+  .nDataContainer{
+    position: absolute;
+    top: 60%;
+    right: 46%;
+  }
+
+  @media (max-width: 950px) {
+    .grid-container{
+      grid-template-columns: 1fr;
+    }
+  }
