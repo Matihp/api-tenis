@@ -14,3 +14,9 @@
     background-color: black;
     border-radius: 10px;
 }
+
+@media (max-width: 950px) {
+    .timeContainer{
+        width: auto;
+    }
+  }
