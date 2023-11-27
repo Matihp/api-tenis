@@ -23,20 +23,6 @@ const CardPlayer = ({name1,name2,time,round,country,points}) => {
                     <p>{name2}</p>  
                 </div>
             </div>
-        // <main className='grid-container'>
-        //     <div className='item'>
-        //         <div className='timeContainer'>
-        //             <p>27/10/2023, 09:00:00</p>
-        //             <p>Basel, Switzerland</p>
-        //             <p>ATP 500</p>
-        //         </div>
-        //         <div className='nameContainer'>
-        //             <p>Hurkacz H.</p>
-        //             <p>VS</p>
-        //             <p>Griekspoor T.</p>  
-        //         </div>
-        //     </div>
-        // </main>
      );
 }
  
