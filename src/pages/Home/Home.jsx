@@ -36,7 +36,7 @@ const Home = () => {
           dataApi()
       },[])
       const filterSpecificNames = (name) => {
-        return /\/?(Cerundolo F|Etcheverry T|Baez S|Schwartzman D|Djokovic N|Zeballos H|Molteni A)\/?/.test(name);
+        return /\/?(Cerundolo F|Etcheverry T|Baez M|Navone F|Diaz F|Coria F|Comesana Carabelli D|Djokovic R|Nadal C|Alcaraz N|Zeballos H|Molteni A)\/?/.test(name);
       };
     
       // Filtrar los datos por nombres con barra al principio o al final seguidos por los nombres específicos
