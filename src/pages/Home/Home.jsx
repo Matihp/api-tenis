@@ -36,7 +36,7 @@ const Home = () => {
           dataApi()
       },[])
       const filterSpecificNames = (name) => {
-        return /\/?(F|Cerundolo T|Etcheverry S|Baez M|Navone F|Díaz F|Coria F|Comesana Carabelli D|Djokovic R|Nadal C|Alcaraz N|Zeballos H|Molteni A)\/?/.test(name);
+        return /\/?(Cerundolo T|Etcheverry S|Baez M|Navone F|Díaz F|Coria F|Comesana Carabelli D|Djokovic R|Nadal C|Alcaraz N|Zeballos H|Molteni A)\/?/.test(name);
       };
     
       // Filtrar los datos por nombres con barra al principio o al final seguidos por los nombres específicos
@@ -55,12 +55,12 @@ const Home = () => {
                 filteredData.map((res, index) => (
                   <CardPlayer
                     key={index}
-                    name1={res.awayTeam.name}
-                    name2={res.homeTeam.name}
-                    time={res.startTimestamp}
-                    round={res.roundInfo.round}
-                    country={res.tournament.name}
-                    points={res.tournament.uniqueTournament.tennisPoints}
+                    name1={res?.awayTeam?.name}
+                    name2={res?.homeTeam?.name}
+                    time={res?.startTimestamp}
+                    round={res?.roundInfo?.round}
+                    country={res?.tournament?.name}
+                    points={res?.tournament?.uniqueTournament?.tennisPoints}
                   />
                 ))
               ) : (
